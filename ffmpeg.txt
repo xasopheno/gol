@@ -1,0 +1,17 @@
+# IMAGE TO VIDEO
+ffmpeg -loop 1 -i rosepersimmon.jpg -c:v libx264 -t 60 -pix_fmt yuv420p -vf scale=1920:1080 rosepersVid.mp4
+
+# VIDEO TO IMAGE
+ffmpeg -i sydneyocean.mp4 -r 30/1 $filename%04d.png
+
+# INTERLACE
+ffmpeg -i last.mp4 -vf "tinterlace=5" out.mp4
+
+# COMBINE?
+ffmpeg -framerate 1 -pattern_type glob -i '*.bmp' -c:v libx264 out.mov
+ffmpeg -r 1/5 -i *.bmp -c:v libx264 -vf "fps=25,format=yuv420p" out.mp4
+
+# BUILD VIDEO
+# ffmpeg -f image2 -r 30 -i %04d.bmp -c:v libx264 -pix_fmt yuv420p out.mp4
+ffmpeg -f image2 -r 10 -i %04d.bmp -c:v libx264 -crf 18  -pix_fmt yuv420p out.mp4
+                                                                     444
