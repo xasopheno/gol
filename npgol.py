@@ -1,5 +1,5 @@
 import numpy as np
-import matplotlib.pyplot as plt
+# import matplotlib.pyplot as plt
 
 # Z = np.array([[0,0,0,0,0,0],
 #               [0,0,0,1,0,0],
